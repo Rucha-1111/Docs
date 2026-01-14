@@ -12,11 +12,11 @@ REST is an architectural style for designing networked applications. It relies o
 
 Each request from client to server must contain all information needed to understand and process the request.
 
-\`\`\`http
+```http
 GET /api/users/123 HTTP/1.1
 Host: api.example.com
 Authorization: Bearer your-token-here
-\`\`\`
+```
 
 ### 2. Resource-Based
 
