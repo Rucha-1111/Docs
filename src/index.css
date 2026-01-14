@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * TECHNICAL WRITER PORTFOLIO - DESIGN SYSTEM
+ * ==========================================
+ * Theme: Futuristic Dark with Neon Purple Accents
+ * Inspired by: MDN Docs, Stripe Documentation
+ */
+
+@layer base {
+  :root {
+    /* Light Mode - Clean and Professional */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 10%;
+
+    --card: 0 0% 99%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    /* Primary - Neon Purple */
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Soft Gray */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 20%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 46%;
+
+    /* Accent - Purple Glow */
+    --accent: 270 91% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 270 91% 65%;
+
+    --radius: 0.5rem;
+
+    /* Custom Tokens */
+    --code-bg: 240 10% 96%;
+    --code-border: 240 6% 90%;
+    --sidebar-bg: 240 5% 98%;
+    --nav-height: 4rem;
+    --sidebar-width: 280px;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(280 100% 70%));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(270 20% 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(270 91% 65% / 0.15), transparent 70%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(240 10% 10% / 0.05);
+    --shadow-md: 0 4px 12px hsl(240 10% 10% / 0.08);
+    --shadow-lg: 0 12px 40px hsl(240 10% 10% / 0.12);
+    --shadow-glow: 0 0 30px hsl(270 91% 65% / 0.3);
+
+    /* Sidebar */
+    --sidebar-background: 240 5% 98%;
+    --sidebar-foreground: 240 10% 20%;
+    --sidebar-primary: 270 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 91% 95%;
+    --sidebar-accent-foreground: 270 91% 40%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 270 91% 65%;
+  }
+
+  .dark {
+    /* Dark Mode - Jet Black with Neon Purple */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Primary - Vibrant Neon Purple */
+    --primary: 270 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Dark Gray */
+    --secondary: 240 10% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 55%;
+
+    /* Accent - Purple Glow */
+    --accent: 270 91% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 270 91% 65%;
+
+    /* Custom Tokens - Dark */
+    --code-bg: 240 10% 8%;
+    --code-border: 240 10% 15%;
+    --sidebar-bg: 240 10% 5%;
+
+    /* Dark Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(270 91% 65%), hsl(280 100% 75%));
+    --gradient-hero: linear-gradient(180deg, hsl(240 10% 4%) 0%, hsl(270 20% 8%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(270 91% 65% / 0.2), transparent 70%);
+
+    /* Dark Shadows */
+    --shadow-sm: 0 1px 2px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 12px 40px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 40px hsl(270 91% 65% / 0.4);
+
+    /* Sidebar Dark */
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 270 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 91% 15%;
+    --sidebar-accent-foreground: 270 91% 75%;
+    --sidebar-border: 240 10% 12%;
+    --sidebar-ring: 270 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Code styling */
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    @apply text-sm;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary/30;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer utilities {
+  /* Custom utilities for the portfolio */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(270 91% 65% / 0.5);
+  }
+
+  .glass {
+    @apply backdrop-blur-md;
+    background: hsl(var(--background) / 0.8);
+  }
+
+  .prose-docs {
+    @apply max-w-none;
+  }
+
+  .prose-docs h1 {
+    @apply text-3xl font-bold mb-6 mt-0;
+  }
+
+  .prose-docs h2 {
+    @apply text-2xl font-semibold mb-4 mt-10 pb-2 border-b border-border;
+  }
+
+  .prose-docs h3 {
+    @apply text-xl font-semibold mb-3 mt-8;
+  }
+
+  .prose-docs p {
+    @apply mb-4 leading-7 text-muted-foreground;
+  }
+
+  .prose-docs ul, .prose-docs ol {
+    @apply mb-4 ml-6 space-y-2;
+  }
+
+  .prose-docs li {
+    @apply text-muted-foreground leading-7;
+  }
+
+  .prose-docs ul li {
+    @apply list-disc;
+  }
+
+  .prose-docs ol li {
+    @apply list-decimal;
+  }
+
+  .prose-docs a {
+    @apply text-primary hover:underline;
+  }
+
+  .prose-docs code:not(pre code) {
+    @apply px-1.5 py-0.5 rounded text-sm font-medium;
+    background: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--code-border));
+  }
+
+  .prose-docs pre {
+    @apply rounded-lg p-4 mb-4 overflow-x-auto;
+    background: hsl(var(--code-bg)) !important;
+    border: 1px solid hsl(var(--code-border));
+  }
+
+  .prose-docs blockquote {
+    @apply border-l-4 border-primary pl-4 italic my-4 text-muted-foreground;
+  }
+
+  .prose-docs table {
+    @apply w-full mb-4 border-collapse;
+  }
+
+  .prose-docs th, .prose-docs td {
+    @apply border border-border px-4 py-2 text-left;
+  }
+
+  .prose-docs th {
+    @apply bg-muted font-semibold;
+  }
+
+  .prose-docs img {
+    @apply rounded-lg my-4;
+  }
+}
