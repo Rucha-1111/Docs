@@ -18,6 +18,8 @@ export interface DocCategory {
   items: DocItem[];
 }
 
+
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -38,6 +40,8 @@ const blogModules = import.meta.glob('/src/content/blogs/*.md', {
   eager: true,
   as: 'raw'
 }) as Record<string, string>;
+
+
 
 // Parse frontmatter from markdown content
 function parseFrontmatter(content: string): { frontmatter: Record<string, unknown>, body: string } {

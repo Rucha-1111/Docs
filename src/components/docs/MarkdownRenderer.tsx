@@ -7,6 +7,17 @@ import { Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
+// Helper function to create URL-safe slugs from heading text
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '') // Remove punctuation
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
 interface MarkdownRendererProps {
   content: string;
   className?: string;
@@ -21,15 +32,15 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children, ...props }) => {
-            const id = String(children).toLowerCase().replace(/\s+/g, '-');
+            const id = slugify(String(children));
             return <h1 id={id} {...props}>{children}</h1>;
           },
           h2: ({ children, ...props }) => {
-            const id = String(children).toLowerCase().replace(/\s+/g, '-');
+            const id = slugify(String(children));
             return <h2 id={id} {...props}>{children}</h2>;
           },
           h3: ({ children, ...props }) => {
-            const id = String(children).toLowerCase().replace(/\s+/g, '-');
+            const id = slugify(String(children));
             return <h3 id={id} {...props}>{children}</h3>;
           },
           code: ({ className, children, ...props }) => {
@@ -47,8 +58,8 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             );
           },
           a: ({ href, children, ...props }) => (
-            <a 
-              href={href} 
+            <a
+              href={href}
               target={href?.startsWith('http') ? '_blank' : undefined}
               rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
               {...props}
@@ -112,15 +123,15 @@ function CodeBlock({ language, children, theme }: CodeBlockProps) {
 export function extractHeadings(markdown: string): { id: string; text: string; level: number }[] {
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   const headings: { id: string; text: string; level: number }[] = [];
-  
+
   let match;
   while ((match = headingRegex.exec(markdown)) !== null) {
     headings.push({
-      id: match[2].toLowerCase().replace(/\s+/g, '-'),
+      id: slugify(match[2]),
       text: match[2],
       level: match[1].length,
     });
   }
-  
+
   return headings;
 }

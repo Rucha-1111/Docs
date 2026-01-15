@@ -55,7 +55,7 @@ const response = await fetch('/api/users', {
   },
   body: JSON.stringify({
     name: 'John Doe',
-    email: 'john@example.com'
+    email: '<john@example.com>'
   })
 });
 \`\`\`

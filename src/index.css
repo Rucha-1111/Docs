@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
+/*
  * TECHNICAL WRITER PORTFOLIO - DESIGN SYSTEM
  * ==========================================
  * Theme: Futuristic Dark with Neon Purple Accents
@@ -144,6 +144,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for fixed navbar height + some padding */
   }
 
   body {
