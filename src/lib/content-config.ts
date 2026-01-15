@@ -94,7 +94,7 @@ function generateDocsConfig(): { categories: DocCategory[] } {
   // Default icons for categories
   const defaultIcons: Record<string, string> = {
     'getting-started': 'Rocket',
-    'concepts': 'BookOpen',
+    'rest-api': 'BookOpen',
     'tutorials': 'Code',
     'reference': 'FileText',
   };
@@ -178,6 +178,24 @@ export function getDocBySlug(slug: string): DocItem | undefined {
   for (const category of docsConfig.categories) {
     const doc = category.items.find(item => item.slug === slug);
     if (doc) return doc;
+  }
+  return undefined;
+}
+
+// Default document slugs to check in order of preference
+const DEFAULT_DOC_SLUGS = ['rest-api-fundamentals', 'rest-api-basics', 'introduction', 'getting-started'];
+
+export function getFirstDocSlug(): string | undefined {
+  // First, check if any of the preferred default documents exist
+  for (const preferredSlug of DEFAULT_DOC_SLUGS) {
+    if (getDocBySlug(preferredSlug)) {
+      return preferredSlug;
+    }
+  }
+
+  // Fallback to the first document in the first category
+  if (docsConfig.categories.length > 0 && docsConfig.categories[0].items.length > 0) {
+    return docsConfig.categories[0].items[0].slug;
   }
   return undefined;
 }

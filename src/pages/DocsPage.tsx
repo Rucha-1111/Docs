@@ -6,20 +6,21 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { DocsLayout } from '@/components/layout/DocsLayout';
 import { MarkdownRenderer, extractHeadings } from '@/components/docs/MarkdownRenderer';
-import { docsConfig, getDocBySlug } from '@/lib/content-config';
+import { docsConfig, getDocBySlug, getFirstDocSlug } from '@/lib/content-config';
 import { docsContent } from '@/lib/docs-content';
 import { Button } from '@/components/ui/button';
 
 export default function DocsPage() {
   const { slug } = useParams<{ slug: string }>();
 
-  // Default to introduction if no slug
-  const currentSlug = slug || 'introduction';
+  // Default to the first available doc if no slug
+  const currentSlug = slug || getFirstDocSlug() || 'introduction';
   const doc = getDocBySlug(currentSlug);
   const content = docsContent[currentSlug];
 
   if (!doc || !content) {
-    return <Navigate to="/docs/introduction" replace />;
+    const firstDocSlug = getFirstDocSlug();
+    return <Navigate to={`/docs/${firstDocSlug}`} replace />;
   }
 
   const headings = extractHeadings(content);
