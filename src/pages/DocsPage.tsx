@@ -54,18 +54,6 @@ export default function DocsPage() {
             {/* Content */}
             <MarkdownRenderer content={content} />
 
-            {/* Metadata */}
-            <div className="mt-12 pt-6 border-t border-border flex items-center gap-4 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5">
-                <Clock className="h-4 w-4" />
-                Last updated: January 2024
-              </span>
-              <button className="flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Edit className="h-4 w-4" />
-                Edit this page
-              </button>
-            </div>
-
             {/* Navigation */}
             <nav className="mt-8 grid grid-cols-2 gap-4">
               {prevDoc ? (

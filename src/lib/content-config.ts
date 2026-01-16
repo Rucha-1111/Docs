@@ -76,12 +76,18 @@ function parseFrontmatter(content: string): { frontmatter: Record<string, unknow
   return { frontmatter, body };
 }
 
-// Extract title from first # heading
+// Extract title from first # heading or numbered title
 function extractTitle(content: string): string {
   const lines = content.split('\n');
   for (const line of lines) {
+    // Check for markdown heading (# Title)
     if (line.startsWith('# ')) {
       return line.substring(2).trim();
+    }
+    // Check for numbered title (1. Title, 2. Title, etc.)
+    const numberedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (numberedMatch) {
+      return numberedMatch[1].trim();
     }
   }
   return 'Untitled';
@@ -98,6 +104,26 @@ function generateDocsConfig(): { categories: DocCategory[] } {
     'tutorials': 'Code',
     'reference': 'FileText',
   };
+
+  // Define custom order for rest-api category
+  const restApiOrder = [
+    'rest-api-fundamentals',
+    'http-basics',
+    'request-response-format',
+    'resource-design',
+    'http-status-codes',
+    'authentication-and-authorization',
+    'validation',
+    'error-handling',
+    'pagination',
+    'rate-limiting',
+    'security',
+    'versioning',
+    'optimization',
+    'testing-rest-api',
+    'real-patterns',
+    'api-doc-strategy'
+  ];
 
   Object.keys(docsModules).forEach(path => {
     // Extract category and slug from path
@@ -130,6 +156,32 @@ function generateDocsConfig(): { categories: DocCategory[] } {
       slug,
       title,
     });
+  });
+
+  // Sort items in each category
+  Object.values(categories).forEach(category => {
+    if (category.slug === 'rest-api') {
+      // Sort rest-api items according to custom order
+      category.items.sort((a, b) => {
+        const indexA = restApiOrder.indexOf(a.slug);
+        const indexB = restApiOrder.indexOf(b.slug);
+
+        // If both items are in the custom order, sort by their position
+        if (indexA !== -1 && indexB !== -1) {
+          return indexA - indexB;
+        }
+
+        // If only one item is in the custom order, prioritize it
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+
+        // If neither is in the custom order, sort alphabetically
+        return a.slug.localeCompare(b.slug);
+      });
+    } else {
+      // For other categories, sort alphabetically
+      category.items.sort((a, b) => a.slug.localeCompare(b.slug));
+    }
   });
 
   return { categories: Object.values(categories) };
