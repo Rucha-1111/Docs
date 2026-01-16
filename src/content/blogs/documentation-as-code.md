@@ -11,7 +11,6 @@ The docs-as-code approach treats documentation with the same rigor as software: 
 ## What is Docs-as-Code?
 
 Docs-as-code means:
-
 - **Writing docs in plain text formats** (Markdown, AsciiDoc)
 - **Storing docs in version control** (Git)
 - **Reviewing docs through pull requests**

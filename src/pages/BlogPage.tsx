@@ -123,19 +123,6 @@ export default function BlogPage() {
                   to={`/blog/${post.slug}`}
                   className="block h-full p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all duration-300"
                 >
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.slice(0, 2).map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary"
-                      >
-                        <Tag className="h-3 w-3" />
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
                   {/* Title */}
                   <h2 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}

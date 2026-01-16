@@ -120,6 +120,7 @@ function CodeBlock({ language, children, theme }: CodeBlockProps) {
 }
 
 // Utility to extract headings from markdown
+// eslint-disable-next-line react-refresh/only-export-components
 export function extractHeadings(markdown: string): { id: string; text: string; level: number }[] {
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   const headings: { id: string; text: string; level: number }[] = [];
