@@ -139,10 +139,6 @@ export default function BlogPage() {
                       <Calendar className="h-3.5 w-3.5" />
                       {formatDate(post.date)}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3.5 w-3.5" />
-                      {post.readingTime}
-                    </span>
                   </div>
                 </Link>
               </motion.article>

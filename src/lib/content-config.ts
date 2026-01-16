@@ -26,7 +26,6 @@ export interface BlogPost {
   description: string;
   date: string;
   tags: string[];
-  readingTime: string;
 }
 
 // Load all docs markdown files
@@ -201,17 +200,12 @@ function generateBlogPosts(): BlogPost[] {
     // Extract description from first paragraph
     const description = body.split('\n\n')[0]?.replace(/^[#\s]*/, '') || '';
 
-    // Estimate reading time (roughly 200 words per minute)
-    const wordCount = body.split(/\s+/).length;
-    const readingTime = `${Math.ceil(wordCount / 200)} min read`;
-
     posts.push({
       slug,
       title: (frontmatter.title as string) || extractTitle(body),
       description,
       date: (frontmatter.date as string) || new Date().toISOString().split('T')[0],
       tags: (frontmatter.tags as string[]) || [],
-      readingTime,
     });
   });
 

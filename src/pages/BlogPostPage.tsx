@@ -88,11 +88,7 @@ export default function BlogPostPage() {
                 <Calendar className="h-4 w-4" />
                 {formatDate(post.date)}
               </span>
-              <span className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                {post.readingTime}
-              </span>
-              
+
               {/* Share */}
               <div className="flex items-center gap-2 ml-auto">
                 <span className="flex items-center gap-1.5">
