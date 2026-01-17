@@ -20,7 +20,7 @@ export function DocsLayout({ children, headings = [] }: DocsLayoutProps) {
       {/* Main Content Area */}
       <div className="flex-1 flex">
         {/* Content */}
-        <main className="flex-1 min-w-0 px-4 lg:px-8 py-8">
+        <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Mobile Menu Button */}
           <div className="lg:hidden mb-6">
             <Button
@@ -34,7 +34,7 @@ export function DocsLayout({ children, headings = [] }: DocsLayoutProps) {
             </Button>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto overflow-x-auto">
             {children}
           </div>
         </main>

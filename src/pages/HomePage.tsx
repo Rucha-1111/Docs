@@ -52,13 +52,13 @@ export default function HomePage() {
         <section className="relative overflow-hidden">
           {/* Background Glow */}
           <div className="absolute inset-0 pointer-events-none">
-            <div 
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] md:w-[800px] md:h-[800px]"
               style={{ background: 'var(--gradient-glow)' }}
             />
           </div>
 
-          <div className="container mx-auto px-4 lg:px-8 py-20 md:py-32 relative z-10">
+          <div className="container mx-auto px-4 lg:px-8 py-16 sm:py-20 md:py-32 relative z-10">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -72,23 +72,23 @@ export default function HomePage() {
                 </span>
               </motion.div>
 
-              <motion.h1 
+              <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+                className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight"
               >
                 Documentation that{' '}
                 <span className="text-gradient">developers love</span>
               </motion.h1>
 
-              <motion.p 
+              <motion.p
                 variants={itemVariants}
                 className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
               >
-                I craft technical documentation that bridges complex systems and human understanding. 
+                I craft technical documentation that bridges complex systems and human understanding.
                 Clear, precise, and developer-focused.
               </motion.p>
 
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
@@ -105,15 +105,15 @@ export default function HomePage() {
             </motion.div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-20"
             >
               {stats.map((stat) => (
-                <motion.div 
-                  key={stat.label} 
+                <motion.div
+                  key={stat.label}
                   variants={itemVariants}
                   className="text-center"
                 >
@@ -174,20 +174,20 @@ export default function HomePage() {
             >
               <div className="absolute inset-0 pointer-events-none" style={{ background: 'var(--gradient-glow)', opacity: 0.5 }} />
               <div className="relative z-10">
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 break-words">
                   Ready to explore the documentation?
                 </h2>
-                <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+                <p className="text-muted-foreground mb-8 max-w-lg mx-auto break-words">
                   Dive into sample documentation showcasing my approach to technical writing.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button asChild size="lg">
+                  <Button asChild size="lg" className="break-words">
                     <Link to="/docs/introduction" className="gap-2">
                       Start Reading
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg">
+                  <Button asChild variant="outline" size="lg" className="break-words">
                     <Link to="/blog">Read the Blog</Link>
                   </Button>
                 </div>

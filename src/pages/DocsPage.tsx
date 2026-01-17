@@ -55,14 +55,14 @@ export default function DocsPage() {
             <MarkdownRenderer content={content} />
 
             {/* Navigation */}
-            <nav className="mt-8 grid grid-cols-2 gap-4">
+            <nav className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {prevDoc ? (
-                <Button asChild variant="outline" className="justify-start h-auto py-4 px-4">
+                <Button asChild variant="outline" className="justify-start h-auto py-4 px-4 min-w-0">
                   <Link to={`/docs/${prevDoc.slug}`}>
                     <ChevronLeft className="h-4 w-4 mr-2 flex-shrink-0" />
-                    <div className="text-left">
+                    <div className="text-left min-w-0">
                       <div className="text-xs text-muted-foreground mb-0.5">Previous</div>
-                      <div className="font-medium">{prevDoc.title}</div>
+                      <div className="font-medium truncate">{prevDoc.title}</div>
                     </div>
                   </Link>
                 </Button>
@@ -70,11 +70,11 @@ export default function DocsPage() {
                 <div />
               )}
               {nextDoc && (
-                <Button asChild variant="outline" className="justify-end h-auto py-4 px-4">
+                <Button asChild variant="outline" className="justify-end h-auto py-4 px-4 min-w-0">
                   <Link to={`/docs/${nextDoc.slug}`}>
-                    <div className="text-right">
+                    <div className="text-right min-w-0">
                       <div className="text-xs text-muted-foreground mb-0.5">Next</div>
-                      <div className="font-medium">{nextDoc.title}</div>
+                      <div className="font-medium truncate">{nextDoc.title}</div>
                     </div>
                     <ChevronRight className="h-4 w-4 ml-2 flex-shrink-0" />
                   </Link>
