@@ -124,6 +124,19 @@ function generateDocsConfig(): { categories: DocCategory[] } {
     'api-doc-strategy'
   ];
 
+  // Define custom order for leetcode category
+  const leetcodeOrder = [
+    'merge-string-alternatively',
+    'gcd-strings',
+    'kids-with-candies',
+    'can-place-flowers',
+    'reverse-vowels-of-strings',
+    'reverse-words-in-string',
+    'product-of-array-except-self',
+    'increasing-triplet-subsequence',
+    'string-compression'
+  ];
+
   Object.keys(docsModules).forEach(path => {
     // Extract category and slug from path
     // Path format: /src/content/docs/category/slug.md
@@ -164,6 +177,24 @@ function generateDocsConfig(): { categories: DocCategory[] } {
       category.items.sort((a, b) => {
         const indexA = restApiOrder.indexOf(a.slug);
         const indexB = restApiOrder.indexOf(b.slug);
+
+        // If both items are in the custom order, sort by their position
+        if (indexA !== -1 && indexB !== -1) {
+          return indexA - indexB;
+        }
+
+        // If only one item is in the custom order, prioritize it
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+
+        // If neither is in the custom order, sort alphabetically
+        return a.slug.localeCompare(b.slug);
+      });
+    } else if (category.slug === 'leetcode') {
+      // Sort leetcode items according to custom order
+      category.items.sort((a, b) => {
+        const indexA = leetcodeOrder.indexOf(a.slug);
+        const indexB = leetcodeOrder.indexOf(b.slug);
 
         // If both items are in the custom order, sort by their position
         if (indexA !== -1 && indexB !== -1) {

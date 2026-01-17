@@ -104,17 +104,9 @@ function CodeBlock({ language, children, theme }: CodeBlockProps) {
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
         </button>
       </div>
-      <SyntaxHighlighter
-        language={language}
-        style={theme === 'dark' ? oneDark : oneLight}
-        customStyle={{
-          margin: 0,
-          borderRadius: '0.5rem',
-          fontSize: '0.875rem',
-        }}
-      >
-        {children}
-      </SyntaxHighlighter>
+      <pre className="bg-muted p-4 rounded-lg overflow-x-auto text-sm">
+        <code>{children}</code>
+      </pre>
     </div>
   );
 }

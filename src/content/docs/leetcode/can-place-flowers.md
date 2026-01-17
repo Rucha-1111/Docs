@@ -1,0 +1,107 @@
+# LeetCode 605. Can Place Flowers
+
+**Difficulty:** Easy
+**Topics:** Arrays, Greedy Approach
+
+**Problem Link:** [605. Can Place Flowers](https://leetcode.com/problems/can-place-flowers/description/)
+
+---
+
+## Problem Statement
+
+You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in **adjacent** plots.
+
+Given an integer array `flowerbed` containing `0'`s and `1'`s, where `0` means empty and `1` means not empty, and an integer `n`, return `true` if **n new flowers** can be planted in the flowerbed without violating the **no-adjacent-flowers rule** and `false` otherwise.
+
+**Example 1:**
+
+Input: flowerbed = `[1,0,0,0,1]`, n = 1
+Output: `true`
+
+**Example 2:**
+
+Input: flowerbed = `[1,0,0,0,1]`, n = 2
+Output: `false`
+
+---
+
+## Java Solution
+
+```java
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int count = 0;
+
+        for (int i = 0; i < flowerbed.length; i++) {
+            if (flowerbed[i] == 0) {
+                boolean left = (i == 0) || (flowerbed[i - 1] == 0);
+                boolean right = (i == flowerbed.length - 1) || (flowerbed[i + 1] == 0);
+
+                if (left && right) {
+                    flowerbed[i] = 1;
+                    count++;
+                }
+            }
+        }
+        return count >= n;
+    }
+}
+```
+
+## Explanation
+
+- `canPlaceFlowers` method evaluates the `int` array of `flowerbed` and the `int n` denoting the number of flowers that are to be planted in the flowerbed. The return type of the method is boolean, meaning if the `n` number of flowers can be planted in the `flowerbed`, then the value `true` is returned as the output, if not, then `false` is returned.
+  The key constraint in this problem is that _no two flowers can be planted in adjacent plots._
+- We start by initiating the variable of `int count = 0` to keep a track of how many flowers can be planted.
+- A `for` loop is initiated to iterate from the first plot of the _flowerbed_ array till the last plot.
+  - Inside this loop, we have a `if` condition that checks if the current plot in the `flowerbed` is an empty plot or not. If it is, we then proceed to check the plots adjacent to it.
+  - `boolean left` checks if the plot left to the _current plot_ is the first plot `(i==0)` or an empty plot `(flowerbed[i - 1] == 0)`. If the plots are empty, then the value of `left` becomes `true` else `false`.
+  - `boolean right` checks if the plot right to the _current plot_ is the last plot `(i==flowerbed.length-1)` or an empty plot `(flowerbed[i + 1] == 0)`. If the plots are empty, then the value of `right` becomes `true` else `false`.
+- If the values of both `left` and `right` are true, we change the value of _current plot_ to **1** inside the `if` condition. We also
+
+---
+
+## Time Complexity & Space Complexity
+
+### Time Complexity: **O(n)**
+
+The algorithm processes the `flowerbed` array using a single `for` loop that iterates from the first index to the last.
+
+- Each element of the array is visited **exactly once**
+- All operations inside the loop, such as comparisons, boolean evaluations, and assignments run in **constant time** `O(1)`
+- There are no nested loops or repeated scans of the array
+
+As a result, the total execution time grows **linearly** with the size of the input array.
+
+If the flowerbed contains `n` plots, the algorithm performs `n` checks.
+
+---
+
+### Space Complexity: **O(1)**
+
+The solution uses a fixed number of variables:
+
+- `count`
+- `left`
+- `right`
+- loop index `i`
+
+These variables require constant memory regardless of the input size.
+
+- No additional arrays or data structures are created
+- The input array is modified **in place**
+- Memory usage does not increase as the size of the flowerbed grows
+
+Therefore, the space complexity remains **constant**.
+
+---
+
+## Key Takeaways
+
+- The problem is solved using a **greedy approach**, placing flowers whenever it is safe to do so.
+- The flowerbed is traversed **once**, ensuring linear time complexity.
+- **Boundary conditions** (first and last positions) are handled safely without extra checks.
+- Boolean logic (`left` and `right`) ensures no adjacent flowers are placed.
+- The `count` variable tracks **valid flower placements** only.
+- The final result depends on whether the number of placed flowers meets or exceeds `n`.
+- The solution is **space-efficient**, using constant extra memory and in-place updates.
