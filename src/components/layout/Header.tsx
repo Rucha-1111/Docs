@@ -27,24 +27,24 @@ export function Header() {
             <span className="text-primary-foreground font-bold text-sm">TW</span>
           </div>
           <span className="font-semibold text-lg hidden sm:block group-hover:text-primary transition-colors">
-            TechWriter
+            DeCoded
           </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
-            const isActive = location.pathname === item.path || 
+            const isActive = location.pathname === item.path ||
               (item.path !== '/' && location.pathname.startsWith(item.path));
-            
+
             return (
               <Link
                 key={item.path}
                 to={item.path}
                 className={cn(
                   "relative px-4 py-2 text-sm font-medium rounded-lg transition-colors",
-                  isActive 
-                    ? "text-primary" 
+                  isActive
+                    ? "text-primary"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 )}
               >
@@ -108,9 +108,9 @@ export function Header() {
           <nav className="container mx-auto py-4 px-4 flex flex-col gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.path || 
+              const isActive = location.pathname === item.path ||
                 (item.path !== '/' && location.pathname.startsWith(item.path));
-              
+
               return (
                 <Link
                   key={item.path}
@@ -118,8 +118,8 @@ export function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
-                    isActive 
-                      ? "bg-primary/10 text-primary" 
+                    isActive
+                      ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )}
                 >
