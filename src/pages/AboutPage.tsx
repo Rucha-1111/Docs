@@ -139,7 +139,7 @@ export default function AboutPage() {
               </Button>
               <Button variant="outline" className="gap-2">
                 <Download className="h-4 w-4" />
-                Download Resume
+                View Resume
               </Button>
             </motion.div>
           </motion.div>

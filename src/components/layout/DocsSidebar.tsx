@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, FileText, BookOpen, Rocket, Code, Settings, X } from 'lucide-react';
+import { ChevronDown, FileText, BookOpen, Rocket, Code, Settings, X, Home } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { docsConfig } from '@/lib/content-config';
@@ -17,6 +17,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Rocket,
   Code,
   Settings,
+  Home,
 };
 
 export function DocsSidebar({ isOpen, onClose }: DocsSidebarProps) {
@@ -76,7 +77,7 @@ export function DocsSidebar({ isOpen, onClose }: DocsSidebarProps) {
                   >
                     {category.items.map((item) => {
                       const isActive = location.pathname === `/docs/${item.slug}`;
-                      
+
                       return (
                         <li key={item.slug}>
                           <Link

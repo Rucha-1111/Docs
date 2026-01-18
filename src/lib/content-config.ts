@@ -98,7 +98,7 @@ function generateDocsConfig(): { categories: DocCategory[] } {
 
   // Default icons for categories
   const defaultIcons: Record<string, string> = {
-    'getting-started': 'Rocket',
+    'introduction': 'Home',
     'rest-api': 'BookOpen',
     'tutorials': 'Code',
     'reference': 'FileText',
@@ -272,7 +272,7 @@ export function getDocBySlug(slug: string): DocItem | undefined {
 }
 
 // Default document slugs to check in order of preference
-const DEFAULT_DOC_SLUGS = ['rest-api-fundamentals', 'rest-api-basics', 'introduction', 'getting-started'];
+const DEFAULT_DOC_SLUGS = ['welcome', 'rest-api-fundamentals', 'rest-api-basics', 'introduction', 'getting-started'];
 
 export function getFirstDocSlug(): string | undefined {
   // First, check if any of the preferred default documents exist
