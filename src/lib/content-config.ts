@@ -228,12 +228,22 @@ function generateBlogPosts(): BlogPost[] {
 
     const { frontmatter, body } = parseFrontmatter(content);
 
-    // Extract description from first paragraph
-    const description = body.split('\n\n')[0]?.replace(/^[#\s]*/, '') || '';
+    const title = (frontmatter.title as string) || extractTitle(body);
+
+    // Extract description from first paragraph that is not a heading
+    let description = '';
+    const paragraphs = body.split('\n\n').filter(p => p.trim());
+    for (const para of paragraphs) {
+      const trimmed = para.trim();
+      if (!trimmed.startsWith('#')) {
+        description = trimmed.replace(/^[#\s]*/, '').trim();
+        break;
+      }
+    }
 
     posts.push({
       slug,
-      title: (frontmatter.title as string) || extractTitle(body),
+      title,
       description,
       date: (frontmatter.date as string) || new Date().toISOString().split('T')[0],
       tags: (frontmatter.tags as string[]) || [],

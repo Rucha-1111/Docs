@@ -77,11 +77,6 @@ export default function BlogPostPage() {
               {post.title}
             </h1>
 
-            {/* Description */}
-            <p className="text-xl text-muted-foreground mb-6">
-              {post.description}
-            </p>
-
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground pb-6 border-b border-border">
               <span className="flex items-center gap-2">

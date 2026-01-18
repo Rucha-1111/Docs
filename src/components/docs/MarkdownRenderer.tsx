@@ -21,10 +21,12 @@ function slugify(text: string): string {
 interface MarkdownRendererProps {
   content: string;
   className?: string;
+  skipFirstH1?: boolean;
 }
 
-export function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
+export function MarkdownRenderer({ content, className, skipFirstH1 = false }: MarkdownRendererProps) {
   const { theme } = useTheme();
+  let isFirstH1 = true;
 
   return (
     <div className={cn("prose-docs", className)}>
@@ -32,6 +34,10 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children, ...props }) => {
+            if (skipFirstH1 && isFirstH1) {
+              isFirstH1 = false;
+              return null;
+            }
             const id = slugify(String(children));
             return <h1 id={id} {...props}>{children}</h1>;
           },

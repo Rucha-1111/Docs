@@ -1,6 +1,6 @@
 ---
 title: Documentation as Code: A Modern Approach
-date: 2024-01-05
+date: 2024-01-10
 tags: ['Docs-as-Code', 'Git', 'Automation']
 ---
 
@@ -9,6 +9,7 @@ The docs-as-code approach treats documentation with the same rigor as software: 
 ## What is Docs-as-Code?
 
 Docs-as-code means:
+
 - **Writing docs in plain text formats** (Markdown, AsciiDoc)
 - **Storing docs in version control** (Git)
 - **Reviewing docs through pull requests**
@@ -20,7 +21,8 @@ Docs-as-code means:
 
 No more "which Google Doc is the latest?" Everything lives in the repository.
 
-\`\`\`
+```
+
 project/
 ├── src/
 ├── tests/
@@ -29,7 +31,7 @@ project/
     ├── api-reference.md
     └── tutorials/
         └── first-integration.md
-\`\`\`
+```
 
 ### 2. Collaboration at Scale
 
@@ -37,10 +39,14 @@ Developers already know Git. Pull request reviews work for documentation too.
 
 \`\`\`bash
 git checkout -b docs/update-auth-guide
+
 # Make changes
+
 git commit -m "docs: clarify OAuth flow"
 git push origin docs/update-auth-guide
+
 # Open PR for review
+
 \`\`\`
 
 ### 3. Automation
@@ -64,7 +70,9 @@ git push origin docs/update-auth-guide
 ### Step 2: Set Up Linting
 
 \`\`\`yaml
+
 # .github/workflows/docs.yml
+
 name: Docs
 on: [pull_request]
 
