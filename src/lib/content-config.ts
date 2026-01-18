@@ -163,11 +163,13 @@ function generateDocsConfig(): { categories: DocCategory[] } {
       };
     }
 
-    // Add doc item
-    categories[categorySlug].items.push({
-      slug,
-      title,
-    });
+    // Add doc item only if it has a proper title
+    if (title !== 'Untitled') {
+      categories[categorySlug].items.push({
+        slug,
+        title,
+      });
+    }
   });
 
   // Sort items in each category
