@@ -68,7 +68,7 @@ export default function HomePage() {
               <motion.div variants={itemVariants} className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
                   <Sparkles className="h-4 w-4" />
-                  Senior Technical Writer
+                  Aspiring Technical Writer
                 </span>
               </motion.div>
 
@@ -104,7 +104,7 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -123,7 +123,7 @@ export default function HomePage() {
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div>*/}
           </div>
         </section>
 

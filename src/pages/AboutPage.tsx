@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  FileText, 
-  Code, 
-  Users, 
-  Lightbulb, 
-  ArrowRight, 
+import {
+  FileText,
+  Code,
+  Users,
+  Lightbulb,
+  ArrowRight,
   Download,
   CheckCircle,
   Mail,
@@ -44,32 +44,39 @@ const skills = [
   'API Documentation',
   'Developer Guides',
   'SDK Documentation',
-  'OpenAPI/Swagger',
   'Markdown/MDX',
   'Docs-as-Code',
   'Technical Editing',
   'Content Strategy',
-  'Information Architecture',
   'Developer Experience',
   'Git/GitHub',
   'React/JavaScript',
+  'Java',
+  'SpringBoot',
+  'AWS',
+  'MongoDB',
+  'REST API',
+  'SDLC',
+  'JDBC',
+  'Data Structure & Algorithms',
+  'Postman'
 ];
 
 const samples = [
   {
-    title: 'REST API Reference',
-    description: 'Complete endpoint documentation with examples, error codes, and best practices.',
-    link: '/docs/endpoints',
+    title: 'REST API Complete Guide',
+    description: 'A single, structured guide covering REST fundamentals, real-world API design, best practices, and common mistakes — built for developers who want clarity, not confusion.',
+    link: '/docs/rest-api-fundamentals',
   },
   {
-    title: 'Getting Started Guide',
-    description: 'Step-by-step onboarding that gets developers productive in minutes.',
-    link: '/docs/quick-start',
+    title: 'LeetCode 75 (Hard) Mastery',
+    description: 'A pattern-driven walkthrough of the toughest LeetCode problems, focused on deep understanding, optimal solutions, and interview-ready thinking.',
+    link: '/docs/merge-string-alternatively',
   },
   {
-    title: 'Concept Documentation',
-    description: 'Deep dive into REST fundamentals with clear explanations and diagrams.',
-    link: '/docs/rest-api-basics',
+    title: 'Engineering Blogs & Insights',
+    description: 'Clear, practical writing on software engineering, problem-solving, and real lessons learned while building and learning — no fluff, just signal.',
+    link: '/blog',
   },
 ];
 
@@ -100,27 +107,27 @@ export default function AboutPage() {
             animate="visible"
             className="max-w-3xl"
           >
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-4xl md:text-5xl font-bold mb-6"
             >
               About Me
             </motion.h1>
 
-            <motion.div 
+            <motion.div
               variants={itemVariants}
               className="text-lg text-muted-foreground space-y-4 mb-8"
             >
               <p>
-                I'm a <span className="text-foreground font-medium">Senior Technical Writer</span> with 
-                a passion for making complex technologies accessible. My work bridges the gap between 
-                engineering teams and developers, creating documentation that accelerates understanding 
-                and adoption.
+                I'm a <span className="text-foreground font-medium">B.Tech graduate</span> with a strong interest in
+                technical writing and documentation. I enjoy breaking down complex technical concepts and presenting
+                them in a clear, structured way.
               </p>
               <p>
-                With experience across API documentation, SDK guides, and developer portals, I've 
-                helped companies reduce support overhead while improving developer satisfaction.
+                I’m building experience in areas like <span className="text-foreground font-medium">API documentation, developer guides, and technical content</span>,
+                with a focus on writing documentation that’s accurate, easy to follow, and useful for developers.
               </p>
+
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
@@ -149,7 +156,7 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold mb-4">Documentation Philosophy</h2>
               <p className="text-muted-foreground max-w-2xl">
-                Great documentation isn't just about explaining features—it's about empowering 
+                Great documentation isn't just about explaining features—it's about empowering
                 users to succeed. These principles guide every document I create.
               </p>
             </motion.div>
@@ -264,20 +271,13 @@ export default function AboutPage() {
             >
               <h2 className="text-3xl font-bold mb-4">Let's Connect</h2>
               <p className="text-muted-foreground mb-8">
-                Interested in working together? I'm always open to discussing new opportunities, 
+                Interested in working together? I'm always open to discussing new opportunities,
                 documentation projects, or just chatting about technical writing.
               </p>
 
               <div className="flex justify-center gap-4 mb-8">
                 <a
-                  href="mailto:hello@techwriter.dev"
-                  className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://github.com"
+                  href="https://github.com/Rucha-1111/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
@@ -286,7 +286,7 @@ export default function AboutPage() {
                   <Github className="h-5 w-5" />
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/rucha-gade/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
@@ -294,21 +294,12 @@ export default function AboutPage() {
                 >
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-muted/80 transition-colors"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </a>
               </div>
 
               <Button asChild size="lg" className="glow">
-                <a href="mailto:hello@techwriter.dev" className="gap-2">
+                <a href="mailto:ruchagade20@gmail.com" className="gap-2">
                   <Mail className="h-4 w-4" />
-                  hello@techwriter.dev
+                  ruchagade20@gmail.com
                 </a>
               </Button>
             </motion.div>

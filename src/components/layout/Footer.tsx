@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom';
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-  { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-  { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
+  { icon: Github, href: 'https://github.com/Rucha-1111/', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/rucha-gade/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:ruchagade20@gmail.com', label: 'Email' },
 ];
 
 const footerLinks = [
@@ -41,7 +40,7 @@ export function Footer() {
               <span className="font-semibold text-lg">TechWriter</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
-              Senior Technical Writer crafting clear, developer-focused documentation 
+              Senior Technical Writer crafting clear, developer-focused documentation
               that bridges complex systems and human understanding.
             </p>
             <div className="flex gap-3">
