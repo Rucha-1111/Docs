@@ -23,9 +23,11 @@ export function Header() {
       <div className="container mx-auto h-full flex items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center glow-pulse">
-            <span className="text-primary-foreground font-bold text-sm">TW</span>
-          </div>
+          <img
+            src="/web-icon.png"
+            alt="DeCoded Logo"
+            className="w-8 h-8 rounded-lg glow-pulse"
+          />
           <span className="font-semibold text-lg hidden sm:block group-hover:text-primary transition-colors">
             DeCoded
           </span>

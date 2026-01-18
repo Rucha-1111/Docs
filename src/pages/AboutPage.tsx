@@ -137,9 +137,11 @@ export default function AboutPage() {
                   Get in Touch
                 </a>
               </Button>
-              <Button variant="outline" className="gap-2">
-                <Download className="h-4 w-4" />
-                View Resume
+              <Button asChild variant="outline" className="gap-2">
+                <a href="/resume.html" target="_blank" rel="noopener noreferrer">
+                  <Download className="h-4 w-4" />
+                  View Resume
+                </a>
               </Button>
             </motion.div>
           </motion.div>
