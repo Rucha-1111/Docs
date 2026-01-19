@@ -24,7 +24,7 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <img
-            src="/web-icon.png"
+            src="/Docs/web-icon.png"
             alt="DeCoded Logo"
             className="w-8 h-8 rounded-lg glow-pulse"
           />
