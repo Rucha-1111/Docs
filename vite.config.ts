@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    base: "/Docs",
     headers: {
       "Cross-Origin-Embedder-Policy": "credentialless",
       "Cross-Origin-Opener-Policy": "same-origin-allow-popups",
