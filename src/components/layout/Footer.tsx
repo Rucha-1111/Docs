@@ -35,7 +35,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <img
-                src="/Documentation/web-icon.png"
+                src="/web-icon.png"
                 alt="DeCoded Logo"
                 className="w-8 h-8 rounded-lg glow-pulse"
               />
