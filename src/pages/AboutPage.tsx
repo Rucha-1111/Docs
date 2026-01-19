@@ -138,7 +138,7 @@ export default function AboutPage() {
                 </a>
               </Button>
               <Button asChild variant="outline" className="gap-2">
-                <a href="/resume.html" target="_blank" rel="noopener noreferrer">
+                <a href="/Docs/resume.html" target="_blank" rel="noopener noreferrer">
                   <Download className="h-4 w-4" />
                   View Resume
                 </a>
