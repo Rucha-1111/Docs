@@ -34,13 +34,15 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">TW</span>
-              </div>
-              <span className="font-semibold text-lg">TechWriter</span>
+              <img
+                src="/web-icon.png"
+                alt="DeCoded Logo"
+                className="w-8 h-8 rounded-lg glow-pulse"
+              />
+              <span className="font-semibold text-lg">DeCoded</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs mb-6">
-              Senior Technical Writer crafting clear, developer-focused documentation
+              Aspiring Technical Writer crafting clear, developer-focused documentation
               that bridges complex systems and human understanding.
             </p>
             <div className="flex gap-3">
