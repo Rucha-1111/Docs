@@ -20,7 +20,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename='/Docs'>
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
