@@ -4,7 +4,7 @@ date: 2026-01-23
 tags: ['Documentation', 'Technical Writing', 'Software Development']
 ---
 
-Let's be honest: most technical documentation is terrible. You know it, I know it, and that frustrated developer at 2 AM googling "how to implement OAuth" definitely knows it. After completing Google's Technical Writing course, I finally understand why—and more importantly, how to fix it.
+Let's be honest, most technical documentation is terrible. You know it, I know it, and that frustrated developer at 2 AM googling "how to implement OAuth" definitely knows it. After completing Google's Technical Writing course, I finally understand why—and more importantly, how to fix it.
 
 ## What Actually Is Technical Writing?
 
