@@ -1,5 +1,5 @@
 ---
-title: "What I Learned About Technical Writing (And Why Your Documentation Probably Needs Help)"
+title: "What I Learned About Technical Writing"
 date: 2026-01-23
 tags: ['Documentation', 'Technical Writing', 'Software Development']
 ---
