@@ -1,7 +1,7 @@
 ---
 title: Designing Before Implementation: When It Helps
 date: 2026-01-15
-tags: ['Software Design', 'Planning', 'Maintainability']
+tags: ['Software Design', 'Developer Practices']
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Error Handling as Part of Design
 date: 2026-01-18
-tags: ['Error Handling', 'Software Design', 'Maintainability']
+tags: ['Software Design', 'Developer Practices']
 ---
 
 

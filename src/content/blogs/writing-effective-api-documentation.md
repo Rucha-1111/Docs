@@ -1,7 +1,7 @@
 ---
 title: Writing Effective API Documentation
 date: 2024-01-10
-tags: ['API', 'Documentation', 'Best Practices']
+tags: ['Documentation', 'Technical Writing', 'Developer Practices']
 ---
 
 # Writing Effective API Documentation

@@ -1,7 +1,7 @@
 ---
 title: The Impact of Naming on Long-Term Maintainability
 date: 2026-01-06
-tags: ['Naming Conventions', 'Maintainability']
+tags: ['Software Design', 'Developer Practices']
 ---
 
 

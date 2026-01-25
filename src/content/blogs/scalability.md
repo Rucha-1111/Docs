@@ -1,7 +1,7 @@
 ---
 title: Scalability Considerations At A Basic Level
 date: 2026-01-09
-tags: ['Software Design', 'System Architecture']
+tags: ['Software Design', 'Developer Practices']
 ---
 
 

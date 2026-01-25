@@ -1,7 +1,7 @@
 ---
 title: Documentation as Code: A Modern Approach
 date: 2024-01-10
-tags: ['Docs-as-Code', 'Git', 'Automation']
+tags: ['Documentation', 'Developer Practices', 'DevOps & Platforms']
 ---
 
 The docs-as-code approach treats documentation with the same rigor as software: version control, reviews, testing, and automation. Here's why it matters and how to implement it.

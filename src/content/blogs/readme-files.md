@@ -1,7 +1,7 @@
 ---
 title: README Files As Technical Communication
 date: 2026-01-10
-tags: ['README', 'Technical Communication', 'Documentation']
+tags: ['Documentation', 'Technical Writing', 'Developer Practices']
 ---
 
 

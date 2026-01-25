@@ -1,7 +1,7 @@
 ---
 title: Why Documentation Is More Than Just Writing
 date: 2026-01-20
-tags: ['Documentation', 'Technical Writing', 'Software Development']
+tags: ['Documentation', 'Technical Writing', 'Developer Practices']
 ---
 
 # Why Documentation Is More Than Just Writing
