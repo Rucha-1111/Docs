@@ -9,6 +9,7 @@ export interface DocItem {
   slug: string;
   title: string;
   description?: string;
+  items?: DocItem[];
 }
 
 export interface DocCategory {
@@ -95,6 +96,7 @@ function extractTitle(content: string): string {
 // Generate docs config from file structure
 function generateDocsConfig(): { categories: DocCategory[] } {
   const categories: Record<string, DocCategory> = {};
+  const categoryPaths: Record<string, string[]> = {};
 
   // Default icons for categories
   const defaultIcons: Record<string, string> = {
@@ -104,49 +106,11 @@ function generateDocsConfig(): { categories: DocCategory[] } {
     'reference': 'FileText',
   };
 
-  // Define custom order for rest-api category
-  const restApiOrder = [
-    'rest-api-fundamentals',
-    'http-basics',
-    'request-response-format',
-    'resource-design',
-    'http-status-codes',
-    'authentication-and-authorization',
-    'validation',
-    'error-handling',
-    'pagination',
-    'rate-limiting',
-    'security',
-    'versioning',
-    'optimization',
-    'testing-rest-api',
-    'real-patterns',
-    'api-doc-strategy'
-  ];
-
-  // Define custom order for leetcode category
-  const leetcodeOrder = [
-    'merge-string-alternatively',
-    'gcd-strings',
-    'kids-with-candies',
-    'can-place-flowers',
-    'reverse-vowels-of-strings',
-    'reverse-words-in-string',
-    'product-of-array-except-self',
-    'increasing-triplet-subsequence',
-    'string-compression'
-  ];
-
   Object.keys(docsModules).forEach(path => {
-    // Extract category and slug from path
-    // Path format: /src/content/docs/category/slug.md
+    // Extract category from path
+    // Path format: /src/content/docs/category/...
     const pathParts = path.split('/');
     const categorySlug = pathParts[4]; // category
-    const fileName = pathParts[5]; // slug.md
-    const slug = fileName.replace('.md', '');
-
-    const content = docsModules[path];
-    const title = extractTitle(content);
 
     // Create category if it doesn't exist
     if (!categories[categorySlug]) {
@@ -163,60 +127,72 @@ function generateDocsConfig(): { categories: DocCategory[] } {
       };
     }
 
-    // Add doc item only if it has a proper title
-    if (title !== 'Untitled') {
-      categories[categorySlug].items.push({
-        slug,
-        title,
-      });
+    // Group paths by category
+    if (!categoryPaths[categorySlug]) {
+      categoryPaths[categorySlug] = [];
     }
+    categoryPaths[categorySlug].push(path);
   });
 
-  // Sort items in each category
-  Object.values(categories).forEach(category => {
-    if (category.slug === 'rest-api') {
-      // Sort rest-api items according to custom order
-      category.items.sort((a, b) => {
-        const indexA = restApiOrder.indexOf(a.slug);
-        const indexB = restApiOrder.indexOf(b.slug);
-
-        // If both items are in the custom order, sort by their position
-        if (indexA !== -1 && indexB !== -1) {
-          return indexA - indexB;
-        }
-
-        // If only one item is in the custom order, prioritize it
-        if (indexA !== -1) return -1;
-        if (indexB !== -1) return 1;
-
-        // If neither is in the custom order, sort alphabetically
-        return a.slug.localeCompare(b.slug);
-      });
-    } else if (category.slug === 'leetcode') {
-      // Sort leetcode items according to custom order
-      category.items.sort((a, b) => {
-        const indexA = leetcodeOrder.indexOf(a.slug);
-        const indexB = leetcodeOrder.indexOf(b.slug);
-
-        // If both items are in the custom order, sort by their position
-        if (indexA !== -1 && indexB !== -1) {
-          return indexA - indexB;
-        }
-
-        // If only one item is in the custom order, prioritize it
-        if (indexA !== -1) return -1;
-        if (indexB !== -1) return 1;
-
-        // If neither is in the custom order, sort alphabetically
-        return a.slug.localeCompare(b.slug);
-      });
-    } else {
-      // For other categories, sort alphabetically
-      category.items.sort((a, b) => a.slug.localeCompare(b.slug));
-    }
+  // Build tree for each category
+  Object.keys(categories).forEach(categorySlug => {
+    categories[categorySlug].items = buildTree(categoryPaths[categorySlug], categorySlug);
   });
 
   return { categories: Object.values(categories) };
+}
+
+// Build tree from paths
+function buildTree(paths: string[], categorySlug: string): DocItem[] {
+  const tree: DocItem[] = [];
+
+  paths.forEach(path => {
+    const relativePath = path.replace(`/src/content/docs/${categorySlug}/`, '').replace('.md', '');
+    const parts = relativePath.split('/');
+    const content = docsModules[path];
+    const title = extractTitle(content);
+
+    if (title !== 'Untitled') {
+      insertItem(tree, parts, relativePath, title);
+    }
+  });
+
+  sortItems(tree);
+  return tree;
+}
+
+// Insert item into tree
+function insertItem(tree: DocItem[], parts: string[], fullSlug: string, title: string) {
+  const currentSlug = parts[0];
+  let item = tree.find(i => i.slug === currentSlug);
+
+  if (!item) {
+    item = {
+      slug: currentSlug,
+      title: parts.length > 1 ? currentSlug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') : title,
+      items: parts.length > 1 ? [] : undefined,
+    };
+    tree.push(item);
+  }
+
+  if (parts.length > 1) {
+    insertItem(item.items!, parts.slice(1), fullSlug, title);
+  } else {
+    // For files, set the full slug and title
+    item.slug = fullSlug;
+    item.title = title;
+    item.items = undefined; // Ensure no items for files
+  }
+}
+
+// Sort items recursively
+function sortItems(items: DocItem[]) {
+  items.sort((a, b) => a.slug.localeCompare(b.slug));
+  items.forEach(item => {
+    if (item.items) {
+      sortItems(item.items);
+    }
+  });
 }
 
 // Generate blog posts from files
@@ -297,4 +273,4 @@ export function getAllTags(): string[] {
   const tags = new Set<string>();
   blogPosts.forEach(post => post.tags.forEach(tag => tags.add(tag)));
   return Array.from(tags).sort();
-}
+} 
