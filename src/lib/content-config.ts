@@ -139,7 +139,19 @@ function generateDocsConfig(): { categories: DocCategory[] } {
     categories[categorySlug].items = buildTree(categoryPaths[categorySlug], categorySlug);
   });
 
-  return { categories: Object.values(categories) };
+  // Order for categories - rearrange the folder names below to change the sidebar order
+  const categoryOrder = ['introduction', 'rest-api', 'leetcode', 'hackerrank-java', 'hackerrank-algorithms', 'hackerrank-datastructures', 'hackerrank-sql', 'tutorials'];
+  const categoriesArray = Object.values(categories);
+  categoriesArray.sort((a, b) => {
+    const aIndex = categoryOrder.indexOf(a.slug);
+    const bIndex = categoryOrder.indexOf(b.slug);
+    if (aIndex === -1 && bIndex === -1) return a.slug.localeCompare(b.slug); // alphabetical for others
+    if (aIndex === -1) return 1; // a not in order, b is, b first
+    if (bIndex === -1) return -1; // b not in order, a is, a first
+    return aIndex - bIndex;
+  });
+
+  return { categories: categoriesArray };
 }
 
 // Build tree from paths
