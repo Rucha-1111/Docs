@@ -140,7 +140,7 @@ function generateDocsConfig(): { categories: DocCategory[] } {
   });
 
   // Order for categories - rearrange the folder names below to change the sidebar order
-  const categoryOrder = ['introduction', 'rest-api', 'leetcode', 'hackerrank-java', 'hackerrank-algorithms', 'hackerrank-datastructures', 'hackerrank-sql', 'tutorials'];
+  const categoryOrder = ['introduction', 'rest-api', 'openshift-redhat', 'leetcode', 'hackerrank-java', 'hackerrank-algorithms', 'hackerrank-datastructures', 'hackerrank-sql', 'tutorials'];
   const categoriesArray = Object.values(categories);
   categoriesArray.sort((a, b) => {
     const aIndex = categoryOrder.indexOf(a.slug);
@@ -199,7 +199,15 @@ function insertItem(tree: DocItem[], parts: string[], fullSlug: string, title: s
 
 // Sort items recursively
 function sortItems(items: DocItem[]) {
-  items.sort((a, b) => a.slug.localeCompare(b.slug));
+  items.sort((a, b) => {
+    // Special sorting for openshift-redhat parts
+    if (a.slug.startsWith('part-') && b.slug.startsWith('part-')) {
+      const aNum = parseInt(a.slug.split('-')[1]);
+      const bNum = parseInt(b.slug.split('-')[1]);
+      return aNum - bNum;
+    }
+    return a.slug.localeCompare(b.slug);
+  });
   items.forEach(item => {
     if (item.items) {
       sortItems(item.items);
